@@ -92,14 +92,6 @@ public class WebViewJNI {
                 invalidate();
             }
         }
-
-        @Override
-        public void onBackPressed() {
-            if(web_view!= null && web_view.canGoBack())
-                web_view.goBack();
-            else
-            super.onBackPressed();
-        }
     }
 
     private static class CustomWebViewClient extends WebViewClient {
