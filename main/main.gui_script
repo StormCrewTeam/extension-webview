@@ -74,8 +74,9 @@ end
 
 function on_input(self, action_id, action)
 
-    pprint("webview action_id: " .. action_id)
-	pprint("webview action: " .. action)
+    if action_id == hash("back") then
+        pprint("backbutton")
+    end
 
     dirtylarry:button("button_open", action_id, action, function()
         if not webview_available() then return end

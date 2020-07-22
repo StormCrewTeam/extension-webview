@@ -46,7 +46,7 @@ static JNIEnv* Attach()
 
 static void Detach()
 {
-    g_AndroidApp->activity->vm->DetachCurrentThread();
+    //g_AndroidApp->activity->vm->DetachCurrentThread();
 }
 
 struct WebViewExtensionState
