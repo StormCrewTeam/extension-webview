@@ -8,6 +8,7 @@ import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Build;
 import android.view.Gravity;
+import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
@@ -250,6 +251,19 @@ public class WebViewJNI {
     public WebViewJNI(Activity activity, int maxnumviews) {
         this.activity = activity;
         this.infos = new WebViewInfo[maxnumviews];
+
+        this.activity.findViewById(android.R.id.content).setOnKeyListener(new View.OnKeyListener(){
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                if(keyCode == KeyEvent.KEYCODE_BACK){
+                    if (WebViewJNI.this.infos[0].webview != null && WebViewJNI.this.infos[0].webview.canGoBack()){
+                        WebViewJNI.this.infos[0].webview.goBack();
+                    }
+                    return true;
+                }
+                return false;
+            }
+        });
     }
 
     private WebViewInfo createView(Activity activity, int webview_id)
